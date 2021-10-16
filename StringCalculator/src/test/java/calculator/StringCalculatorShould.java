@@ -59,5 +59,29 @@ class StringCalculatorShould {
 			System.out.println(e.getMessage());
 		}
 	}
+	@Test
+	void stringWithNumbersBiggerThan1000ShouldBeIgnored() {
+		StringCalculator stringCalculator = new StringCalculator();
+		// Numbers bigger than 1000 should be ignored
+		assertEquals(2, stringCalculator.add("2,1001"));
+	}
+
+	@Test
+	void stringWithAllowMultipleDelimiters() {
+		StringCalculator stringCalculator = new StringCalculator();
+		// Allow multiple delimiters like this:
+		assertEquals(6, stringCalculator.add1("//[*][%]\\n1*2%3"));
+	}
+
+	@Test
+	void stringWithDelimeterAnyLength() {
+		StringCalculator stringCalculator = new StringCalculator();
+		// Delimiters can be of any length.
+		// . make sure you can also handle multiple delimiters with length longer than
+		// one char
+		// for example
+		// “//[**][%%]\n1**2%%3” == 6.
+		assertEquals(6, stringCalculator.add1("//[***]\\n1***2***3"));
+	}
 
 }
