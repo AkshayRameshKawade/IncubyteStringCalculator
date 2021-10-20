@@ -25,7 +25,8 @@ public class StringCalculator {
 	}
 
 	// for String to integer convert
-	private int stringToIntegerConvertor(String[] numbers) throws RuntimeException {
+	private int stringToIntegerConvertor(String[] numbers) throws RuntimeException
+	{
 		List<Integer> list = new ArrayList<>();
 		for (String num : numbers) {
 			if (Integer.parseInt(num) <= 0) {
@@ -38,6 +39,7 @@ public class StringCalculator {
 		}
 		int sum = 0;
 		for (String num : numbers) {
+			// if value is greter than 1000 then ignore
 			if (Integer.parseInt(num) > 1000) {
 				continue;
 			}
@@ -56,6 +58,22 @@ public class StringCalculator {
 		}
 		return sum;
 	}
+	public int add2(String input)
+	{
+		int count=0;
+		String[] numbers = input.split(delimeter);
+		for(int i=0;i<numbers.length-2;i++)
+		{
+			int a=Integer.parseInt(numbers[i]);
+			int b=Integer.parseInt(numbers[i+1]);
+			int c=Integer.parseInt(numbers[i+2]);
+			if(a==6 &&b==6&&c==6)
+				count++;
+				
+		}
+		if(count==3)
+		return 42;
+		return 0;
+	}
 
 }
-

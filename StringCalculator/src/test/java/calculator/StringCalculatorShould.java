@@ -5,6 +5,10 @@ import main.java.calculator.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Assert;
+
+
+
 class StringCalculatorShould {
 
     @Test
@@ -22,7 +26,7 @@ class StringCalculatorShould {
 	void stringWithTwoNumberCommaDelimterReturnNumberAsSum() {
 		StringCalculator stringCalculator = new StringCalculator();
 		// return sum of comma seperated numbers
-		assertEquals(3, stringCalculator.add("1,2"));
+	Assert.assertEquals("add",4, stringCalculator.add("2,2"));
 	}
     @Test
 	void stringWithUnknownNumberWithCommaDelimterReturnNumberAsSum() {
@@ -47,9 +51,10 @@ class StringCalculatorShould {
 		} catch (RuntimeException e) {
 			System.out.println(e.getMessage());
 		}
+		
 	}
 
-	@Test()
+	@Test
 	void stringWithWithMultipleNegativeNumberThrowException() {
 		StringCalculator stringCalculator = new StringCalculator();
 		// If there are multiple negatives, show all of them in the exception message
@@ -82,6 +87,12 @@ class StringCalculatorShould {
 		// for example
 		// “//[**][%%]\n1**2%%3” == 6.
 		assertEquals(6, stringCalculator.add1("//[***]\\n1***2***3"));
+	}
+	@Test
+	void AddConsugatingNumber() {
+		StringCalculator stringCalculator = new StringCalculator();
+		// Allow multiple delimiters like this:
+		assertEquals(42, stringCalculator.add2("1,2,3,6,6,6,4,5,6"));
 	}
 
 }
